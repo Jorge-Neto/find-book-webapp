@@ -1,0 +1,14 @@
+{
+  "books": [
+    {
+      "id": "9788576082675",
+      "isbn": "9788576082675",
+      "name": "Boas Práticas",
+      "coverImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Question_book-new.svg/1200px-Question_book-new.svg.png",
+      "rating": 4.5,
+      "promotionalPrice": 39.9,
+      "price": 99.9
+
+    }
+  ]
+}

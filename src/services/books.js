@@ -1,3 +1,5 @@
+import api from './api';
+
 export const validateIsbn = (isbn) => {
   if (isbn.lenght !== 13 || isbn.substring(0, 3) !== '978') return false;
 
@@ -13,4 +15,9 @@ export const validateIsbn = (isbn) => {
     }, 0);
   const validDigit = 10 - (isbnSum % 10);
   return isbnDigit === validDigit;
+};
+
+export const getBook = async (isbn) => {
+  const response = await api.get(`/books/${isbn}`);
+  return response.data;
 };

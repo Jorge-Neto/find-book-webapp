@@ -1,18 +1,21 @@
 import React, { useEffect } from 'react';
 
+import PropTypes from 'prop-types';
+
 import Quagga from 'quagga';
 
 import { validateIsbn } from '../../../services/books';
 
 import { Video, Container, ScanMarker } from './styles';
 
-function Scanner() {
+function Scanner({ onScan }) {
   let scannerAttemps = 0;
   const onDetected = (result) => {
     Quagga.offDetected(onDetected);
     const isbn = result.codeResult.code;
     if (validateIsbn(isbn)) {
       alert(`ISBN válido`, isbn);
+      onScan(isbn);
     } else if (scannerAttemps >= 5) {
       alert('Não é possível ler o código do livro');
     }
@@ -70,3 +73,8 @@ function Scanner() {
 }
 
 export default Scanner;
+
+Scanner.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  onScan: PropTypes.func,
+}

@@ -37,12 +37,11 @@ const theme = {
     danger: '#f37272',
     light: '#ecf0f1',
     dark: '#233240',
-    background: '#f37272',
-    text: '#fff',
+    background: '#ecf0f1',
+    text: '#3b3a3e',
     link: '#3498db',
 
     // Brands
-    devSamurai: '#f37272',
   },
   fonts: ['Open Sans', 'Arial', 'Helvetica', 'sans-serif'].join(','),
   fontSizes: {
