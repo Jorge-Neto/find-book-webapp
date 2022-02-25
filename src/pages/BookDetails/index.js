@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom';
 import { getBook } from '../../services/books';
 
 import Info from './Info';
+import GeneralScore from './GeneralScore';
 
 import { Container } from './styles';
 
-function BookDetails() {
+const BookDetails = () => {
   const { isbn } = useParams();
-  const [book, setBook] = useState();
+  const [book, setBook] = useState({ isbn: null });
 
   useEffect(() => {
     const loadBook = async () => {
@@ -23,6 +24,7 @@ function BookDetails() {
       {book && (
         <Container>
           <Info book={book} />
+          <GeneralScore book={book} />
         </Container>
       )}
     </>
