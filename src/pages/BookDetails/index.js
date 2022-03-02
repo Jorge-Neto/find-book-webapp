@@ -4,6 +4,8 @@ import { getBook } from '../../services/books';
 
 import Info from './Info';
 import GeneralScore from './GeneralScore';
+import Scores from './Scores';
+import Extra from './Extra';
 
 import { Container } from './styles';
 
@@ -25,10 +27,12 @@ const BookDetails = () => {
         <Container>
           <Info book={book} />
           <GeneralScore book={book} />
+          <Scores book={book} />
+          <Extra book={book} />
         </Container>
       )}
     </>
   );
-}
+};
 
 export default BookDetails;

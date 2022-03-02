@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './pages/Main';
 import BookDetails from './pages/BookDetails';
 
-
 export default function Routes() {
   return (
     <Router>

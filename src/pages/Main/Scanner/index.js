@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
@@ -8,13 +9,12 @@ import { validateIsbn } from '../../../services/books';
 
 import { Video, Container, ScanMarker } from './styles';
 
-function Scanner({ onScan }) {
+const Scanner = ({ onScan }) => {
   let scannerAttemps = 0;
   const onDetected = (result) => {
     Quagga.offDetected(onDetected);
     const isbn = result.codeResult.code;
     if (validateIsbn(isbn)) {
-      alert(`ISBN válido`, isbn);
       onScan(isbn);
     } else if (scannerAttemps >= 5) {
       alert('Não é possível ler o código do livro');
@@ -36,10 +36,10 @@ function Scanner({ onScan }) {
               facingMode: 'environment',
             }, // Or '#yourElement' (optional)
           },
-          numOfWorkers: 1,
+          numOfWorkers: 4,
           locate: true,
           decoder: {
-            readers: ['ean_reader'],
+            readers: ['ean_reader', 'code_128_reader'],
           },
         },
         (err) => {
@@ -70,11 +70,11 @@ function Scanner({ onScan }) {
       </Container>
     </>
   );
-}
+};
 
 export default Scanner;
 
 Scanner.propTypes = {
   // eslint-disable-next-line react/require-default-props
   onScan: PropTypes.func,
-}
+};

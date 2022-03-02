@@ -11,9 +11,9 @@ const Scores = ({ book }) => (
       book.scores.map((b) => (
         <Score scoreColor={calculateScore(b.value).color}>
           <Value scoreColor={calculateScore(b.value).color}>
-            <span>{b.value}</span>
+            <span className="value">{b.value}</span>
           </Value>
-          <span>{b.name}</span>
+          <span className="label">{b.name}</span>
         </Score>
       ))}
   </Container>
