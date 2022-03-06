@@ -1,17 +1,22 @@
+# Find Book Web App
 
-# Rodar:
+App criado utilizando React, Quagga, Axios e que pode rodar utilizando o Json-Server.
+
+Foi criada uma API para esta aplicação, presente em: https://github.com/Jorge-Neto/find-book-apiv2
+
+# Após clonar, execute:
+```sh
 npm run install
+```
+```sh
 npm run build
+```
+```sh
 npm run start
+```
 
-# Criar servidores no localhost para acesso na rede.
+# Banco de dados
 
-## Para o APP:
-ssh -R 80:192.168.0.107:3000 client@ssh.localhost.run
+Insira dados para o Json Server em
 
-## Para a API
-ssh -R 80:localhost:5000 api@ssh.localhost.run
-
-
-
-ssh -R 80:localhost:5000 api@ssh.localhost.run
+> db.json
