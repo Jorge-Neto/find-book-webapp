@@ -13,10 +13,14 @@ const Scanner = ({ onScan }) => {
   let scannerAttemps = 0;
   const onDetected = (result) => {
     Quagga.offDetected(onDetected);
+
     const isbn = result.codeResult.code;
-    if (validateIsbn(isbn)) {
+
+    if (validateIsbn(isbn) === true) {
       onScan(isbn);
-    } else if (scannerAttemps >= 5) {
+      return;
+    }
+    if (scannerAttemps >= 5) {
       alert('Não é possível ler o código do livro');
     }
 
@@ -39,7 +43,7 @@ const Scanner = ({ onScan }) => {
           numOfWorkers: 4,
           locate: true,
           decoder: {
-            readers: ['ean_reader', 'code_128_reader'],
+            readers: ['ean_reader'],
           },
         },
         (err) => {
@@ -72,9 +76,9 @@ const Scanner = ({ onScan }) => {
   );
 };
 
-export default Scanner;
-
 Scanner.propTypes = {
   // eslint-disable-next-line react/require-default-props
   onScan: PropTypes.func,
 };
+
+export default Scanner;

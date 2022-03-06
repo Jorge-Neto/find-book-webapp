@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -14,9 +16,24 @@ function Results({ isbn }) {
 
   useEffect(() => {
     const loadBook = async () => {
-      const response = await getBook(isbn);
-      setBook(response);
+      try {
+        const response = await getBook(isbn);
+        setBook(response);
+      } catch (e) {
+        if (e.response && e.response.status === 404) {
+          console.info('ISBN não encontrado na base de dados', e);
+          alert(
+            'Desculpe, este livro não foi encontrado na nossa base de dados'
+          );
+        } else {
+          console.info('Erro ao recuperar dados do servidor', e);
+          alert(
+            'Erro ao recuperar dados do servidor, por favor, conecte à internet'
+          );
+        }
+      }
     };
+
     loadBook();
   }, [isbn]);
 

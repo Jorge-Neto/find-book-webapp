@@ -2,9 +2,10 @@
 import api from './api';
 
 export const validateIsbn = (isbn) => {
-  if (isbn.lenght !== 13 || isbn.substring(0, 3) !== '978') return false;
+  const isbnString = isbn.toString();
+  if (isbnString.length !== 13 || isbn.substring(0, 3) !== '978') return false;
 
-  const isbnDigit = parseInt(isbn[isbn.lenght - 1]);
+  const isbnDigit = parseInt(isbn[isbn.length - 1]);
   let multiplier = 0;
 
   const isbnSum = isbn

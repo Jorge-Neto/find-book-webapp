@@ -15,7 +15,7 @@ const Extra = ({ book }) => (
     </Container>
     <Container>
       <span className="title">Descricao</span>
-      <p>book.description</p>
+      <p>${book.description}</p>
     </Container>
   </>
 );
